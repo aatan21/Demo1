@@ -18,6 +18,13 @@ button.height = 230;
 const message = document.createElement("p");
 message.textContent = "Upgrades: ";
 
+let autopetPrice = 100;
+let petters = 0;
+let chewballPrice = 10;
+let balls = 0;
+let autopetButton = document.getElementById("buyautopet");
+let chewballButton = document.getElementById("buyball");
+
 let counter: number = 0;
 const textBreak = document.createElement("br");
 const counterElement = document.createElement("counterElem")!;
@@ -28,4 +35,26 @@ button.addEventListener("click", () => {
   counter += 1;
   counterElement.textContent = counter.toString();
   console.log("I have these thingies:", button, counterElement, counter);
+});
+
+autopetButton!.addEventListener("click", () => {
+  if (counter >= autopetPrice) {
+    counter -= autopetPrice;
+    counterElement.textContent = counter.toString();
+    autopetPrice += 10;
+    petters += 1;
+    autopetButton!.innerText = "Buy Autopetter 🐶🖐️🤖 (" +
+      autopetPrice.toString() + ")";
+  }
+});
+
+chewballButton!.addEventListener("click", () => {
+  if (counter >= chewballPrice) {
+    counter -= chewballPrice;
+    counterElement.textContent = counter.toString();
+    chewballPrice += 1;
+    balls += 1;
+    chewballButton!.innerText = "Buy Chewing Ball 🥎 (" +
+      chewballPrice.toString() + ")";
+  }
 });
