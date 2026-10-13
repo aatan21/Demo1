@@ -82,7 +82,7 @@ autopetButton!.addEventListener("click", () => {
     autopetButton!.innerText = "Buy Autopetter 🐶🖐️🤖 (" +
       autopetPrice.toString() + ")";
 
-    pps += 1;
+    pps += 1 * multiplier;
     petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
     upgrades.textContent = upgrades.textContent + "🖐️";
   }
@@ -97,7 +97,7 @@ chewballButton!.addEventListener("click", () => {
     chewballButton!.innerText = "Buy Chewing Ball 🥎 (" +
       chewballPrice.toString() + ")";
 
-    pps += 0.1;
+    pps += 0.1 * multiplier;
     petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
     upgrades.textContent = upgrades.textContent + "🥎";
   }
@@ -119,6 +119,8 @@ upgradeButton!.addEventListener("click", () => {
     ppc += 1;
     petsperclick.textContent = "Pets Per Click: " + ppc.toString();
     upgrades.textContent = upgrades.textContent + "⬆️";
+    pps *= multiplier;
+    petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
   }
 });
 
