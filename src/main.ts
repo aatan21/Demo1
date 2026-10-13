@@ -22,8 +22,8 @@ button.height = 230;
 let stable = puppyGeorge;
 let clicked = tongueGeorge;
 
-const message = document.createElement("p");
-message.textContent = "Upgrades: ";
+const upgrades = document.createElement("p");
+upgrades.textContent = "Upgrades: ";
 
 const petspersecond = document.createElement("p");
 let pps = 0;
@@ -56,7 +56,7 @@ app.append(
   counterElement,
   petspersecond,
   petsperclick,
-  message,
+  upgrades,
 );
 
 button.addEventListener("pointerup", () => {
@@ -84,6 +84,7 @@ autopetButton!.addEventListener("click", () => {
 
     pps += 1;
     petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
+    upgrades.textContent = upgrades.textContent + "🖐️";
   }
 });
 
@@ -98,6 +99,7 @@ chewballButton!.addEventListener("click", () => {
 
     pps += 0.1;
     petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
+    upgrades.textContent = upgrades.textContent + "🥎";
   }
 });
 
@@ -112,6 +114,7 @@ upgradeButton!.addEventListener("click", () => {
 
     ppc += 1;
     petsperclick.textContent = "Pets Per Click: " + ppc.toString();
+    upgrades.textContent = upgrades.textContent + "⬆️";
   }
 });
 
