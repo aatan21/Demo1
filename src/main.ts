@@ -2,7 +2,7 @@
 // even this tiny example demonstrates a separately deployed asset.
 // @deno-types="./asset-url.d.ts"
 //hello i am here
-import tileUrl from "./assets/Georgia1.png?no-inline";
+import puppyGeorge from "./assets/Georgia1.png?no-inline";
 import tongueGeorge from "./assets/GeorgiaClick.png?no-inline";
 
 const app = document.querySelector<HTMLElement>("#app")!;
@@ -11,7 +11,7 @@ const heading = document.createElement("h1");
 heading.textContent = "Pet That Dog!";
 
 const button = document.createElement("img");
-button.src = tileUrl;
+button.src = puppyGeorge;
 button.alt = "A black lab puppy";
 button.width = 190;
 button.height = 230;
@@ -26,28 +26,29 @@ let balls = 0;
 const autopetButton = document.getElementById("buyautopet");
 const chewballButton = document.getElementById("buyball");
 
-let counter: number = 0;
+let counter: number = 100;
 const textBreak = document.createElement("br");
 const counterElement = document.createElement("counterElem")!;
-counterElement.textContent = counter.toString();
+counterElement.textContent = counter.toFixed(1);
 app.append(heading, button, textBreak, "Pets: ", counterElement, message);
 
+button.addEventListener("pointerup", () => {
+  button.src = puppyGeorge;
+});
+button.addEventListener("pointerdown", () => {
+  button.src = tongueGeorge;
+});
 button.addEventListener("click", () => {
   counter += 1;
-  counterElement.textContent = counter.toString();
-  button.addEventListener("pointerup", () => {
-    button.src = tileUrl;
-  });
-  button.addEventListener("pointerdown", () => {
-    button.src = tongueGeorge;
-  });
+  counterElement.textContent = counter.toFixed(1);
+
   console.log("I have these thingies:", button, counterElement, counter);
 });
 
 autopetButton!.addEventListener("click", () => {
   if (counter >= autopetPrice) {
     counter -= autopetPrice;
-    counterElement.textContent = counter.toString();
+    counterElement.textContent = counter.toFixed(1);
     autopetPrice += 10;
     petters += 1;
     autopetButton!.innerText = "Buy Autopetter 🐶🖐️🤖 (" +
@@ -58,10 +59,15 @@ autopetButton!.addEventListener("click", () => {
 chewballButton!.addEventListener("click", () => {
   if (counter >= chewballPrice) {
     counter -= chewballPrice;
-    counterElement.textContent = counter.toString();
+    counterElement.textContent = counter.toFixed(1);
     chewballPrice += 1;
     balls += 1;
     chewballButton!.innerText = "Buy Chewing Ball 🥎 (" +
       chewballPrice.toString() + ")";
   }
 });
+
+setInterval(function () {
+  counter = counter + petters + (balls * 0.1);
+  counterElement.textContent = counter.toFixed(1);
+}, 1000);
