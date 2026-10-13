@@ -5,7 +5,6 @@
 import puppyGeorge from "./assets/Georgia1.png?no-inline";
 import tongueGeorge from "./assets/GeorgiaClick.png?no-inline";
 import adultGeorge from "./assets/OlderGeorgia.png?no-inline";
-import toyBall from "./assets/chewBall.webp?no-inline";
 import adultGeorgeClicked from "./assets/GeorgiaClick2.png?no-inline";
 
 const app = document.querySelector<HTMLElement>("#app")!;
