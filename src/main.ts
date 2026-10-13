@@ -3,6 +3,7 @@
 // @deno-types="./asset-url.d.ts"
 //hello i am here
 import tileUrl from "./assets/Georgia1.png?no-inline";
+import tongueGeorge from "./assets/GeorgiaClick.png?no-inline";
 
 const app = document.querySelector<HTMLElement>("#app")!;
 
@@ -14,6 +15,11 @@ button.src = tileUrl;
 button.alt = "A black lab puppy";
 button.width = 190;
 button.height = 230;
+const george2 = document.createElement("img");
+george2.src = tongueGeorge;
+george2.alt = "A black lab puppy with her tongue out";
+george2.width = 190;
+george2.height = 230;
 
 const message = document.createElement("p");
 message.textContent = "Upgrades: ";
@@ -22,8 +28,8 @@ let autopetPrice = 100;
 let petters = 0;
 let chewballPrice = 10;
 let balls = 0;
-let autopetButton = document.getElementById("buyautopet");
-let chewballButton = document.getElementById("buyball");
+const autopetButton = document.getElementById("buyautopet");
+const chewballButton = document.getElementById("buyball");
 
 let counter: number = 0;
 const textBreak = document.createElement("br");
@@ -34,6 +40,12 @@ app.append(heading, button, textBreak, "Pets: ", counterElement, message);
 button.addEventListener("click", () => {
   counter += 1;
   counterElement.textContent = counter.toString();
+  button.addEventListener("pointerup", () => {
+    button.src = tileUrl;
+  });
+  button.addEventListener("pointerdown", () => {
+    button.src = tongueGeorge;
+  });
   console.log("I have these thingies:", button, counterElement, counter);
 });
 
