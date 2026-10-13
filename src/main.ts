@@ -24,6 +24,9 @@ let clicked = tongueGeorge;
 
 const message = document.createElement("p");
 message.textContent = "Upgrades: ";
+const petspersecond = document.createElement("p");
+let pps = 0;
+petspersecond.textContent = "Pets Per Second: " + pps.toString();
 
 const bark = new Audio("src/assets/dog-bark.wav");
 
@@ -41,7 +44,15 @@ let counter: number = 3000;
 const textBreak = document.createElement("br");
 const counterElement = document.createElement("counterElem")!;
 counterElement.textContent = counter.toFixed(1);
-app.append(heading, button, textBreak, "Pets: ", counterElement, message);
+app.append(
+  heading,
+  button,
+  textBreak,
+  "Pets: ",
+  petspersecond,
+  counterElement,
+  message,
+);
 
 button.addEventListener("pointerup", () => {
   button.src = stable;
@@ -65,6 +76,9 @@ autopetButton!.addEventListener("click", () => {
     petters += 1;
     autopetButton!.innerText = "Buy Autopetter 🐶🖐️🤖 (" +
       autopetPrice.toString() + ")";
+
+    pps += 1;
+    petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
   }
 });
 
@@ -76,6 +90,9 @@ chewballButton!.addEventListener("click", () => {
     balls += 1;
     chewballButton!.innerText = "Buy Chewing Ball 🥎 (" +
       chewballPrice.toString() + ")";
+
+    pps += 0.1;
+    petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
   }
 });
 
