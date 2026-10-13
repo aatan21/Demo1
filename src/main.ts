@@ -24,9 +24,13 @@ let clicked = tongueGeorge;
 
 const message = document.createElement("p");
 message.textContent = "Upgrades: ";
+
 const petspersecond = document.createElement("p");
 let pps = 0;
 petspersecond.textContent = "Pets Per Second: " + pps.toString();
+const petsperclick = document.createElement("p");
+let ppc = 1;
+petsperclick.textContent = "Pets Per Click: " + ppc.toString();
 
 const bark = new Audio("src/assets/dog-bark.wav");
 
@@ -49,8 +53,9 @@ app.append(
   button,
   textBreak,
   "Pets: ",
-  petspersecond,
   counterElement,
+  petspersecond,
+  petsperclick,
   message,
 );
 
@@ -104,6 +109,9 @@ upgradeButton!.addEventListener("click", () => {
     stable = adultGeorge;
     button.src = stable;
     clicked = adultGeorgeClicked;
+
+    ppc += 1;
+    petsperclick.textContent = "Pets Per Click: " + ppc.toString();
   }
 });
 
