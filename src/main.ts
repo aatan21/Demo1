@@ -23,7 +23,7 @@ let stable = puppyGeorge;
 let clicked = tongueGeorge;
 
 const upgrades = document.createElement("p");
-upgrades.textContent = "Upgrades: ";
+upgrades.textContent = "Improvements: ";
 
 const petspersecond = document.createElement("p");
 let pps = 0;
@@ -111,6 +111,10 @@ upgradeButton!.addEventListener("click", () => {
     stable = adultGeorge;
     button.src = stable;
     clicked = adultGeorgeClicked;
+
+    upgradePrice += 1000;
+    upgradeButton!.innerText = "Upgrade Doggie 🐶⬆️ (" +
+      upgradePrice.toString() + ")";
 
     ppc += 1;
     petsperclick.textContent = "Pets Per Click: " + ppc.toString();
