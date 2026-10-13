@@ -15,11 +15,6 @@ button.src = tileUrl;
 button.alt = "A black lab puppy";
 button.width = 190;
 button.height = 230;
-const george2 = document.createElement("img");
-george2.src = tongueGeorge;
-george2.alt = "A black lab puppy with her tongue out";
-george2.width = 190;
-george2.height = 230;
 
 const message = document.createElement("p");
 message.textContent = "Upgrades: ";
