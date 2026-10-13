@@ -33,6 +33,7 @@ petsperclick.textContent = "Pets Per Click: " + ppc.toString();
 
 const bark = new Audio("src/assets/dog-bark.wav");
 
+let counter: number = 0;
 let autopetPrice = 100;
 let petters = 0;
 let chewballPrice = 10;
@@ -42,8 +43,6 @@ let multiplier = 1;
 const autopetButton = document.getElementById("buyautopet");
 const chewballButton = document.getElementById("buyball");
 const upgradeButton = document.getElementById("ageUp");
-
-let counter: number = 3000;
 const textBreak = document.createElement("br");
 const counterElement = document.createElement("counterElem")!;
 counterElement.textContent = counter.toFixed(1);
@@ -126,4 +125,15 @@ upgradeButton!.addEventListener("click", () => {
 setInterval(function () {
   counter = counter + (petters * multiplier) + ((balls * 0.1) * multiplier);
   counterElement.textContent = counter.toFixed(1);
+  if (counter < autopetPrice) {
+    autopetButton!.style.backgroundColor = `rgb(163,163,163)`;
+  } else autopetButton!.style.backgroundColor = "blue";
+
+  if (counter < chewballPrice) {
+    chewballButton!.style.backgroundColor = `rgb(163, 163, 163)`;
+  } else chewballButton!.style.backgroundColor = "blue";
+
+  if (counter < upgradePrice) {
+    upgradeButton!.style.backgroundColor = `rgb(163, 163, 163)`;
+  } else upgradeButton!.style.backgroundColor = "blue";
 }, 1000);
