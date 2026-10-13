@@ -25,6 +25,8 @@ let clicked = tongueGeorge;
 const message = document.createElement("p");
 message.textContent = "Upgrades: ";
 
+const bark = new Audio("src/assets/dog-bark.wav");
+
 let autopetPrice = 100;
 let petters = 0;
 let chewballPrice = 10;
@@ -47,8 +49,9 @@ button.addEventListener("pointerup", () => {
 button.addEventListener("pointerdown", () => {
   button.src = clicked;
 });
-button.addEventListener("click", () => {
+button.addEventListener("mousedown", () => {
   counter += 1 * multiplier;
+  bark.play();
   counterElement.textContent = counter.toFixed(1);
 
   console.log("I have these thingies:", button, counterElement, counter);
