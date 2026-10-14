@@ -72,8 +72,6 @@ button.addEventListener("mousedown", () => {
   counter += 1 * multiplier;
   bark.play();
   counterElement.textContent = counter.toFixed(1);
-
-  console.log("I have these thingies:", button, counterElement, counter);
 });
 
 autopetButton!.addEventListener("click", () => {
@@ -93,6 +91,7 @@ autopetButton!.addEventListener("click", () => {
 chewballButton!.addEventListener("click", () => {
   if (counter >= chewballPrice) {
     counter -= chewballPrice;
+    chewballPrice += 10;
     balls += 1;
     chewballButton!.innerText = "Buy Chewing Ball 🥎 (" +
       chewballPrice.toString() + ")";
