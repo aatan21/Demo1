@@ -28,6 +28,7 @@ interface buyable {
   newppc: number;
   newpps: number;
   numbought: number;
+  agedog: boolean;
 }
 const buyables: buyable[] = [{
   buttontext: "Buy Chewing Ball 🥎",
@@ -36,6 +37,7 @@ const buyables: buyable[] = [{
   newppc: 0,
   newpps: 0.1,
   numbought: 0,
+  agedog: false,
 }, {
   buttontext: "Buy Autopetter 🐶🖐️🤖",
   emoji: "🤖",
@@ -43,6 +45,7 @@ const buyables: buyable[] = [{
   newppc: 0,
   newpps: 1,
   numbought: 0,
+  agedog: false,
 }, {
   buttontext: "Upgrade Doggie 🐶⬆️",
   emoji: "⬆️",
@@ -50,6 +53,7 @@ const buyables: buyable[] = [{
   newppc: 1,
   newpps: 0,
   numbought: 0,
+  agedog: true,
 }];
 const buttons: HTMLElement[] = [];
 
@@ -65,7 +69,7 @@ petsperclick.textContent = "Pets Per Click: " + ppc.toString();
 
 const bark = new Audio("src/assets/dog-bark.wav");
 
-let counter: number = 0;
+let counter: number = 3000;
 /*let autopetPrice = 100;
 let petters = 0;
 let chewballPrice = 10;
@@ -126,6 +130,12 @@ for (let i = 0; i < buyables.length; i++) {
       ppc += buyables[i].newppc;
       upgradelist.textContent = upgradelist.textContent + buyables[i].emoji;
       petsperclick.textContent = "Pets Per Click: " + ppc.toString();
+
+      if (buyables[i].agedog) {
+        stable = adultGeorge;
+        button.src = stable;
+        clicked = adultGeorgeClicked;
+      }
       update();
     }
   });
