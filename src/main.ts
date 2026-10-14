@@ -69,7 +69,7 @@ petsperclick.textContent = "Pets Per Click: " + ppc.toString();
 
 const bark = new Audio("src/assets/dog-bark.wav");
 
-let counter: number = 1000;
+let counter: number = 0;
 
 const textBreak = document.createElement("br");
 const counterElement = document.createElement("counterElem")!;
