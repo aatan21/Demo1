@@ -59,7 +59,7 @@ const buttons: HTMLElement[] = [];
 
 const upgradelist = document.createElement("p");
 upgradelist.textContent = "Improvements: ";
-
+let multiplier = 1;
 const petspersecond = document.createElement("p");
 let pps = 0;
 petspersecond.textContent = "Pets Per Second: " + pps.toString();
@@ -69,7 +69,7 @@ petsperclick.textContent = "Pets Per Click: " + ppc.toString();
 
 const bark = new Audio("src/assets/dog-bark.wav");
 
-let counter: number = 0;
+let counter: number = 1000;
 
 const textBreak = document.createElement("br");
 const counterElement = document.createElement("counterElem")!;
@@ -118,7 +118,7 @@ for (let i = 0; i < buyables.length; i++) {
       newButton.innerText = buyables[i].buttontext + "(" +
         buyables[i].price.toFixed(1).toString() + ")";
 
-      pps += buyables[i].newpps;
+      pps += buyables[i].newpps * multiplier;
       ppc += buyables[i].newppc;
       upgradelist.textContent = upgradelist.textContent + buyables[i].emoji;
       petsperclick.textContent = "Pets Per Click: " + ppc.toString();
@@ -127,6 +127,8 @@ for (let i = 0; i < buyables.length; i++) {
         stable = adultGeorge;
         button.src = stable;
         clicked = adultGeorgeClicked;
+        pps *= 2;
+        multiplier += 1;
       }
       update();
     }
