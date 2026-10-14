@@ -57,6 +57,11 @@ app.append(
   upgrades,
 );
 
+function update() {
+  counterElement.textContent = counter.toFixed(1);
+  petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
+}
+
 button.addEventListener("pointerup", () => {
   button.src = stable;
 });
@@ -74,37 +79,32 @@ button.addEventListener("mousedown", () => {
 autopetButton!.addEventListener("click", () => {
   if (counter >= autopetPrice) {
     counter -= autopetPrice;
-    counterElement.textContent = counter.toFixed(1);
     autopetPrice += 10;
     petters += 1;
     autopetButton!.innerText = "Buy Autopetter 🐶🖐️🤖 (" +
       autopetPrice.toString() + ")";
 
     pps += 1 * multiplier;
-    petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
     upgrades.textContent = upgrades.textContent + "🖐️";
+    update();
   }
 });
 
 chewballButton!.addEventListener("click", () => {
   if (counter >= chewballPrice) {
     counter -= chewballPrice;
-    counterElement.textContent = counter.toFixed(1);
-    chewballPrice += 1;
     balls += 1;
     chewballButton!.innerText = "Buy Chewing Ball 🥎 (" +
       chewballPrice.toString() + ")";
-
     pps += 0.1 * multiplier;
-    petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
     upgrades.textContent = upgrades.textContent + "🥎";
+    update();
   }
 });
 
 upgradeButton!.addEventListener("click", () => {
   if (counter >= upgradePrice) {
     counter -= upgradePrice;
-    counterElement.textContent = counter.toFixed(1);
     multiplier++;
     stable = adultGeorge;
     button.src = stable;
@@ -118,7 +118,7 @@ upgradeButton!.addEventListener("click", () => {
     petsperclick.textContent = "Pets Per Click: " + ppc.toString();
     upgrades.textContent = upgrades.textContent + "⬆️";
     pps *= multiplier;
-    petspersecond.textContent = "Pets Per Second: " + pps.toFixed(1).toString();
+    update();
   }
 });
 
