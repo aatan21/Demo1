@@ -6,6 +6,7 @@ import puppyGeorge from "./assets/Georgia1.png?no-inline";
 import tongueGeorge from "./assets/GeorgiaClick.png?no-inline";
 import adultGeorge from "./assets/OlderGeorgia.png?no-inline";
 import adultGeorgeClicked from "./assets/GeorgiaClick2.png?no-inline";
+import bgMusic from "./assets/Garden.wav?no-inline";
 
 const app = document.querySelector<HTMLElement>("#app")!;
 
@@ -20,6 +21,7 @@ button.height = 230;
 
 let stable = puppyGeorge;
 let clicked = tongueGeorge;
+soundPlay(bgMusic);
 
 interface buyable {
   buttontext: string;
@@ -92,6 +94,13 @@ app.append(
   petsperclick,
   upgradelist,
 );
+
+function soundPlay(url: string): void {
+  const audio = new Audio(url);
+  audio.play().catch((error) => {
+    console.error("Playback Failed", error);
+  });
+}
 
 function update() {
   counterElement.textContent = counter.toFixed(1);
